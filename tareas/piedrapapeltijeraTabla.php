@@ -9,11 +9,12 @@ define ('TIJERAS',  "&#x1F596;");
 define ('PAPEL',    "&#x1F91A;" );
 
 // Tabla de mensajes en función del ganador
-$tmsg = ["¡Empate !",
-    " Ha ganado el jugador 1",
-    " Ha ganado el jugador 2"];
 
-
+$tmsg = [
+      "¡Empate !",
+      " Ha ganado el jugador 1",
+      " Ha ganado el jugador 2"
+];
 
 /**
  *  Calcula el ganador usando una tabla
@@ -58,7 +59,7 @@ $mensaje = $tmsg[calcularGanadorTabla($num1,$num2)];
       </tr>
       <tr>
         <td><span style="font-size: 7rem"><?= $jugador1; ?></span></td>
-        <td><span style="font-size: 7rem"><?= ($jugador2 == PIEDRA)?PIEDRA2:$jugador2; ?></span></td>
+        <td><span style="font-size: 7rem"><?= $jugador2; ?></span></td>
       </tr>
       <tr>
         <td colspan="2"><?= $mensaje ?></td>

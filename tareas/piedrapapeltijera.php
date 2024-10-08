@@ -9,9 +9,11 @@ define ('TIJERAS',  "&#x1F596;");
 define ('PAPEL',    "&#x1F91A;" );
 
 // Tabla de mensajes en función del ganador
-$tmsg = ["¡Empate !",
-    " Ha ganado el jugador 1",
-    " Ha ganado el jugador 2"];
+$tmsg = [
+          "¡Empate !",
+          " Ha ganado el jugador 1",
+          " Ha ganado el jugador 2"
+        ];
 
 
 /**
@@ -35,11 +37,19 @@ function calcularGanador (String $valor1, String $valor2): int{
     return $ganador;
 }
 
+function obtenerFicha (){
+  $valor = rand(0,2);
+  switch ($valor){
+    case 0: return PIEDRA;
+    case 1: return TIJERAS;
+    case 2: return PAPEL;
+  }
+}
 
-$valores = [PIEDRA,TIJERAS,PAPEL];
-$jugador1 = $valores[rand(0,2)];
-$jugador2 = $valores[rand(0,2)];
-$mensaje =  $tmsg[calcularGanador($jugador1,$jugador2)]; 
+$jugador1 = obtenerFicha();
+$jugador2 = obtenerFicha();
+$pos = calcularGanador($jugador1,$jugador2);
+$mensaje =  $tmsg[$pos]; 
 $jugador2 = ($jugador2 == PIEDRA)?PIEDRA2:$jugador2;
 
 ?>
