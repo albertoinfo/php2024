@@ -7,6 +7,7 @@
  *
  */
 define('NUMDADOS', 5);
+
 // Caracteres UTF8( de dados 1 a 6)
 $tcharDados = [
   1 => "&#9856;", 2 => "&#9857;",
@@ -26,7 +27,6 @@ function generarDados($numdados): array
     // Valores del dado
     $valores[] = random_int(1, 6);
   }
-
   return $valores;
 }
 
@@ -38,6 +38,18 @@ function calcularPuntos( array $tdados): int
   $sum = $sum - max($tdados) - min($tdados);
   return $sum;
 }
+
+// Otra forma de calcular
+function calcularPuntos2( array $tdados): int
+{
+  sort($tdados);
+  array_shift($tdados); // Quito el primero
+  array_pop($tdados);   // Quito el último
+  $sum = array_sum($tdados);
+  return $sum;
+}
+
+
 
 function generarMensajeGanador($puntos1, $puntos2): string
 {
@@ -153,7 +165,7 @@ $msgGanador    = generarMensajeGanadorvar($puntosJugado1, $puntosJugado2,$puntos
   </table>
 
   <footer>
-    <p>By Alberto López</p>
+    <p><u>By Alberto López</u></p>
   </footer>
 </body>
 
