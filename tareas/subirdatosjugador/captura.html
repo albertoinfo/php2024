@@ -1,0 +1,103 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Jugador</title>
+    <style>
+        body {
+    
+            background-color: #9a9ab4;
+            padding: 20px;
+            font-family: "Lucida Console", "Courier New", monospace;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"], select, input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .weapons-options, .magic-options {
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        
+        .titulo {
+            text-align: center;
+            font-family: "Lucida Console", "Courier New", monospace;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="titulo">Formulario de Jugador</h1>
+
+    <form method="post" enctype="multipart/form-data">
+        <!-- Nombre -->
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required>
+
+        <!-- Alias -->
+        <label for="alias">Alias:</label>
+        <input type="text" id="alias" name="alias" required>
+
+        <!-- Edad -->
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" name="edad" min="0" required>
+
+        <!-- Armas a elegir -->
+        <fieldset class="weapons-options">
+            <legend>Armas a elegir (puedes elegir varias):</legend>
+            <label><input type="checkbox" name="armas[]" value="Maza"> Maza</label>
+            <label><input type="checkbox" name="armas[]" value="Antorcha"> Antorcha</label>
+            <label><input type="checkbox" name="armas[]" value="Martillo"> Martillo</label>
+            <label><input type="checkbox" name="armas[]" value="Látigo"> Látigo</label>
+        </fieldset>
+
+        <!-- Artes Mágicas -->
+        <fieldset class="magic-options">
+            <legend>¿Practica artes mágicas?</legend>
+            <label><input type="radio" name="artes_magicas" value="si" required> Sí</label>
+            <label><input type="radio" name="artes_magicas" value="no" required> No</label>
+        </fieldset>
+
+        <!-- Subir imagen -->
+        <input type="hidden" name="MAX_FILE_SIZE" value="50000" />
+        <label for="imagen">Subir imagen:</label>
+        <input type="file" id="imagen" name="imagen" accept="image/png">
+        
+
+        <!-- Botón de envío -->
+        <button type="submit">Enviar</button>
+        <button type="reset">Borrar</button>
+        
+    </form>
+
+</body>
+</html>
