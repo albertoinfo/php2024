@@ -11,8 +11,8 @@
 <b> Seleccione su valor:</b>
 <form>
   
-  <button name="usuario" value="<?=0  ?>"><span style="font-size: 7rem"> <?=PIEDRA ?> </span></button>
-  <button name="usuario" value="<?=1   ?>"><span style="font-size: 7rem"> <?=PAPEL ?> </span></button>
+  <button name="usuario" value="<?=0 ?>"><span style="font-size: 7rem"> <?=PIEDRA  ?> </span></button>
+  <button name="usuario" value="<?=1 ?>"><span style="font-size: 7rem"> <?=PAPEL   ?> </span></button>
   <button name="usuario" value="<?=2 ?>"><span style="font-size: 7rem"> <?=TIJERAS ?> </span></button>
 </form>
 </body>
