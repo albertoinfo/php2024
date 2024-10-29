@@ -17,7 +17,7 @@ if ($_FILES['imagen']['error'] != UPLOAD_ERR_NO_FILE) {
         $rutaArchivo = $directorioSubida . $nombreArchivo;
 
         // Si es una imagen png y no supera el tamaño permitido
-        if ($_FILES['imagen']['type'] == "image/png" && $_FILES['imagen']['size'] <=  35000) {
+        if ($_FILES['imagen']['type'] == "image/png" && $_FILES['imagen']['size'] <=  10000) {
             // Mover la imagen subida a la carpeta de destino
             if (move_uploaded_file($_FILES["imagen"]["tmp_name"], $rutaArchivo)) {
                 $imagenSubida = $rutaArchivo;
@@ -97,7 +97,7 @@ $listadearmas = count($armas) > 0 ? implode(', ', $armas) : 'Ninguna';
             <td>
                 <?php if ($imagenSubida): ?>
                     <p><strong>Imagen subida:</strong></p>
-                    <img src="<?php echo $imagenSubida; ?>" alt="Imagen del jugador">
+                    <img src="<?= $imagenSubida; ?>" alt="Imagen del jugador">
                 <?php else: ?>
                     <p><strong>No se subió ninguna imagen.</strong></p>
                     <img src="calavera.png" alt="Imagen del jugador">

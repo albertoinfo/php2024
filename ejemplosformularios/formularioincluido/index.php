@@ -1,4 +1,5 @@
 <?php
+ob_start();
 $error = false;
 if ( $_SERVER["REQUEST_METHOD"] == 'POST'){
     if (empty($_REQUEST['nombre']) ||  empty($_REQUEST['clave'])){
@@ -21,6 +22,9 @@ if ( $_SERVER["REQUEST_METHOD"] == 'POST'){
 if ( $_SERVER["REQUEST_METHOD"] == 'GET' or $error ){
     include ("entrada.php");
 }    
+$contenido = ob_get_clean();
+
+include ("principal.php");
 
 
 

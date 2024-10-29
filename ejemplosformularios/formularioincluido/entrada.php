@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<link href="default.css" rel="stylesheet" type="text/css" />
-</head>
-<body>
-	<div id="container" style="width: 380px;">
+
+	
 		<div id="header">
 			<h1>FORMULARIOS DE ACCESO</h1>
 		</div>
@@ -29,6 +23,3 @@
 				<input type="submit" name="orden" value="Entrar">
 			</form>
 		</div>
-	</div>
-</body>
-</html>

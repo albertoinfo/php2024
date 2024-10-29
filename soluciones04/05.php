@@ -102,7 +102,7 @@ function añadirpre(): string
 {
 
 	$añadir = "";
-	if ($_POST['edad'] == 4) {
+	if ($_POST['edad'] >= 55) {
 		$añadir = ($_POST['sexo'] == "hombre") ? " Don" : " Doña";
 	}
 	return $añadir;
