@@ -18,36 +18,41 @@ if (!is_readable(FICH_DATOS)) {
 // Añado datos al fichero 
 if (!empty($_REQUEST['user']) && ! empty($_REQUEST['clave'])) {
     // abrimos el fichero para añadir al final
-    // ERROR no chequeo los datos
-    $cadena = $_REQUEST['user'] . '|' . $_REQUEST['clave'] . "\n";
+    // Ciframos la contraseña
+    $clavehash = password_hash($_REQUEST['clave'], PASSWORD_DEFAULT);
+    $cadena = $_REQUEST['user'] . '|' . $clavehash. "\n";
     // Si no esta lo añado
-    if (!actualizarUsuario($_REQUEST['user'], $_REQUEST['clave'])) {
+    if (!actualizarUsuario($_REQUEST['user'], $clavehash)) {
         $ok = file_put_contents(FICH_DATOS, $cadena, FILE_APPEND);
         if (! $ok)  echo "ERROR al añadir datos";
     }
 }
 
-function actualizarUsuario($usuario, $clave)
+function actualizarUsuario($usuario, $clave): bool
 {
     $filearray = file(FICH_DATOS);
     $actualizado = false;
-    foreach ($filearray as $linea) {
+    foreach ($filearray as &$linea) {
         $partes = explode('|', htmlspecialchars(trim($linea)));
         if ($partes[0] == $usuario) {
             $partes[1] = $clave;
+            $linea = implode('|', $partes) . "\n";
             $actualizado = true;
-            break;
+            break; // NO hace falta buscar más
         }
     }
-    volcarDatos($filearray);
+    if ($actualizado) {
+         volcarDatos($filearray);
+    }
+    return $actualizado;
 }
 
-function volcarDatos($tabla)
+function volcarDatos($tabla): void
 {
     $fich = fopen(FICH_DATOS, "w");
 
-    foreach ($tabla as $partes) {
-        $linea = $partes[0] . '|' . $partes[1] . "\n";
+    foreach ($tabla as $linea) {
+        fputs($fich, $linea);
     }
     fclose($fich);
 }
