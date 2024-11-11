@@ -1,17 +1,19 @@
 <?php
 session_start();
 
-// No hay cliente todavía
-if (!isset($_SESSION['cliente'])) {
-    require_once('bienvenida.php');
-    exit(); // Termina el programa
-}
+
 
 
 // Nuevo cliente: valores iniciales en la sesión
 if (isset($_GET['cliente'])) {
     $_SESSION['cliente'] = $_GET['cliente'];
     $_SESSION['pedidos'] = [];
+}
+
+// No hay cliente todavía
+if (!isset($_SESSION['cliente'])) {
+    require_once('bienvenida.php');
+    exit(); // Termina el programa
 }
 
 
