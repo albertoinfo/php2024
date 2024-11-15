@@ -46,6 +46,7 @@ function accionModificar($id){
 
 // Modifica el contenido de usuario
 function accionPostModificar() {
+    //<<<< COMPLETAR >>>>>>
     $id = $_POST['login'];
     $nuevovalor = [ $_POST['clave'],$_POST['nombre'],$_POST['comentario']];
     $_SESSION['tuser'][$id]= $nuevovalor;  

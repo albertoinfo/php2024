@@ -6,6 +6,7 @@ function cargarDatos(): array
 {
     $funcion = __FUNCTION__ . TIPO; //   Ejemplo: cargarDatostxt
     return $funcion();
+
 }
 
 // Vuelva los datos a ficheros segun el TIPO
