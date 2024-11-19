@@ -23,7 +23,7 @@
  if ( flock($fp,LOCK_EX)){
      $numero = fgets($fp);
      $numero = $numero +1;
-    // usleep(5000000); Test prueba espera 5 sg 
+      //usleep(5000000); //Test prueba espera 5 sg 
      rewind($fp); // Me situo al principio del fichero
      fputs($fp,$numero);
      flock($fp,LOCK_UN);  // LIBERO EL BLOQUEA
