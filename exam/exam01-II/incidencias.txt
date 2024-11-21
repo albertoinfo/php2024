@@ -1,0 +1,11 @@
+02:10:2020 21:52,Ana,Cambiar pantalla en A206,3,192.168.12.2
+13:11:2020 10:10,Ramón,Error en el proxy,2,80.44.12.4
+15:11:2020 09:21,Jesús,No hay conexión con la Base de datos,1,127.0.0.1
+23:11:2020 15:40,Ana,instalar java,4,192.168.15.23
+21:11:2024 12:35,Josele,No hay papel en la impresora MP0232,2,127.0.0.1
+21:11:2024 12:36,Josele,No hay papel en la impresora MP0232,1,127.0.0.1
+21:11:2024 12:43,Josele,No hay papel en la impresora MP023212,3,127.0.0.1
+21:11:2024 12:43,Josele,No hay papel en la impresora MP023212,2,127.0.0.1
+21:11:2024 12:43,Josele,No hay papel en la impresora MP023212,4,127.0.0.1
+21:11:2024 12:44,fff,dsdfsd,4,127.0.0.1
+21:11:2024 13:14,Carmen,Pantalla rota,1,127.0.0.1
