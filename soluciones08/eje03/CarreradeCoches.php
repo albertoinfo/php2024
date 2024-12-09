@@ -66,7 +66,7 @@ function alcanzarMeta ( array $tcoches, int $distancia):bool{
 
 // Ordeno la tabla de objetos por los kilometros recorridos
 // OJO hay que pasarlo por REFERENCIA 
-function ordenarClasificacion ( &$tcoches):void{
+function ordenarClasificacion ( array &$tcoches):void{
     
     // Uso una función anónima
     usort($tcoches,function($a, $b) {

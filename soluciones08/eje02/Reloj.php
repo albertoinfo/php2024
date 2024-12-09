@@ -19,9 +19,17 @@ class Reloj
         $fhoras    = intval( $this->segundos / 3600);
         $fminutos  = intval(($this->segundos - ($fhoras*3600))/60);
         $fsegundos = intval( $this->segundos - ($fhoras*3600) - ($fminutos*60));
-        if ( !$this->formato24 && $fhoras > 12 ) $fhoras = $fhoras -12;
-        return sprintf("%02d:%02d:%02d",$fhoras,$fminutos,$fsegundos);
-        return "";
+        $msg="";
+        if ( !$this->formato24  ) {
+            if ($fhoras > 12) {
+                $msg="pm";
+                $fhoras = $fhoras -12;
+            }else {
+                $msg ="am";
+            }
+            
+        }
+        return sprintf("%02d:%02d:%02d %s ",$fhoras,$fminutos,$fsegundos,$msg);
     }
     
     // Cambiar formato24, recibe un valor true si quiero formato de
