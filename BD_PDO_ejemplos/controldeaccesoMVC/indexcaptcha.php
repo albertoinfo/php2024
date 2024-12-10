@@ -25,28 +25,31 @@ if (isset($_SESSION['timeout'])) {
     }
 }
 
-// HA ENTRADO EN LA APLICACIÓN Y NO PULSA SALIR
 
-if (isset($_SESSION['Nombre']) &&  $_SERVER['REQUEST_METHOD'] == "GET") {
-    $mensaje = " $_SESSION[Nombre] Bienvenido al sistema <br>";
-    $mensaje .= " Has entrado $_SESSION[accesos] veces <br>";
-    $_SESSION['timeout'] = time(); // Actualizo la temporización
-    include_once 'app/vistas/vistaapp.php';
+// PROCESO FORMULARIO  ORDEM  SALIR
+
+if (isset($_REQUEST['orden']) and $_REQUEST['orden'] == "Salir") {
+    session_destroy();
+    header("refresh:0");
     exit();
 }
 
-// EJEMPLO DE CONEXIÓN A LA BASE DE DATOS
-// Utilizando el interfaz PDO
+// HA ENTRADO EN LA APLICACIÓN Y NO PULSA SALIR
 
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
+if (isset($_SESSION['Nombre'])) {
+    $mensaje = " $_SESSION[Nombre] Bienvenido al sistema <br>";
+    $mensaje .= " Has entrado $_SESSION[accesos] veces <br>";
+    $_SESSION['timeout'] = time(); // Actualizo la temporización
+    // SE CARGA LA VISTA GENERAL DE LA APLICACIÓN
+    // Por ejemplo se carga una vista con los datos de la tabla Productos
+    $db = AccesoDatos::getModelo();
+    $tproductos = $db->getProductos();
+    include_once 'app/vistas/vistaapp_pro.php';
+    exit();
+}
 
-    if ($_POST['orden'] == "Salir") {
-        session_destroy();
-        header("refresh:0");
-        exit();
-    }
-
-    if ($_POST['orden'] == "Entrar") {
+// QUIERE ENTRAR EN LA APLICACIÓN
+if (isset($_REQUEST['orden']) and $_REQUEST['orden'] == "Entrar") {
         
         // Si ha habido chaptcha
         if ( isset ($_POST["g-recaptcha-response"])){
@@ -79,5 +82,5 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             }
         }
     
-}
+
 include_once 'app/vistas/vistaloginapp.php';
