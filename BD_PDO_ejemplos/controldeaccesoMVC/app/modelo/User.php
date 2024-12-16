@@ -6,6 +6,7 @@ private $passwd;
 private $Nombre;
 private $accesos;
 private $bloqueo;
+private $salidatimeout;
 
 function __set($name, $value)
 {

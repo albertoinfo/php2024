@@ -35,7 +35,7 @@ $stmt->setFetchMode(PDO::FETCH_ASSOC);
 echo " <table border=1><tr><th>login</th><th>nombre</th><th>password</th><th>Comentario</th></tr>";
 while ( $fila = $stmt->fetch()) {
     echo "<tr>";
-    echo "<td>$fila[login]</td>";
+    echo "<td>".$fila['login']."</td>";
     echo "<td>$fila[nombre]</td>";
     echo "<td>$fila[password]</td>";
     echo "<td>$fila[comentario]</td>";
@@ -102,7 +102,9 @@ $stmt2->execute();
 echo " <br> INSERT Se han afectado ". $stmt2->rowCount()." filas <br>";
 // rowCount es util en DELETE/DELETE/INSERT
 
-
+$stmt3 = $dbh->prepare(" DELETE from Usuarios Where nombre='Pepe'");
+$stmt3->execute();
+echo " <br> DELETE Se han afectado ". $stmt3->rowCount()." filas <br>";
 
 // Otra forma de obtener todos los resultados  fetchAll
 // La ejecuto sentencia de consulta de nuevo
@@ -122,7 +124,7 @@ foreach ( $tobj as $obj ) {
     echo "<td>$obj->login</td>";
     echo "<td>$obj->nombre</td>";
     echo "<td>$obj->password</td>";
-    echo "<td>$obj->comentario]</td>";
+    echo "<td>".$obj->comentario."</td>";
     echo "</tr>";
 }
 echo "</table>";
