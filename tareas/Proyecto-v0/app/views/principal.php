@@ -9,7 +9,7 @@
 <body>
 <div id="container" style="width: 950px;">
 <div id="header">
-<h1>MIS CLIENTES CRUD versión 1.1</h1>
+<h1>MIS CLIENTES CRUD versión 1.0</h1>
 </div>
 <div id="aviso">
 <?= $msg ?>

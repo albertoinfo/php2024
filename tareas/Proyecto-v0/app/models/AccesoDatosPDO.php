@@ -87,44 +87,7 @@ class AccesoDatos {
         return $cli;
     }
 
-     
-    public function getClienteSiguiente($id){
-
-        $cli = false;
-        
-        $stmt_cli   = $this->dbh->prepare("select * from Clientes where id >? limit 1");
-        // Enlazo $id con el primer ? 
-        $stmt_cli->bindParam(1,$id);
-        $stmt_cli->setFetchMode(PDO::FETCH_CLASS, 'Cliente');
-        if ( $stmt_cli->execute() ){
-            if ( $obj = $stmt_cli->fetch()){
-               $cli= $obj;
-           }
-       }
-        return $cli;
-
-    }
-
-    public function getClienteAnterior($id){
-
-        $cli = false;
-        
-        $stmt_cli   = $this->dbh->prepare("select * from Clientes where id <? order by id DESC limit 1");
-       // Enlazo $id con el primer ? 
-        $stmt_cli->bindParam(1,$id);
-        $stmt_cli->setFetchMode(PDO::FETCH_CLASS, 'Cliente');
-        if ( $stmt_cli->execute() ){
-           if ( $obj = $stmt_cli->fetch()){
-              $cli= $obj;
-          }
-        }
-       
-    return $cli;
-
-    }
-
-
-
+   
 
     // UPDATE TODO
     public function modCliente($cli):bool{
