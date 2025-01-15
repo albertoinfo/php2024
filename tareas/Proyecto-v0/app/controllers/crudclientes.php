@@ -28,13 +28,6 @@ function crudDetalles($id){
     include_once "app/views/detalles.php";
 }
 
-function crudDetallesSiguiente($id){
-    include_once "app/views/todo.php";
-}
-
-function crudDetallesAnterior($id){
-   include_once "app/views/todo.php";
-}
 
 
 function crudModificar($id){

@@ -42,15 +42,6 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" ){
     }
 
 
-     // Proceso las ordenes de navegación en detalles
-    if ( isset($_GET['nav-detalles']) && isset($_GET['id']) ) {
-     switch ( $_GET['nav-detalles']) {
-        case "Siguiente": crudDetallesSiguiente($_GET['id']); break;
-        case "Anterior" : crudDetallesAnterior($_GET['id']); break;
-        
-    }
-     }
-
     // Proceso de ordenes de CRUD clientes
     if ( isset($_GET['orden'])){
         switch ($_GET['orden']) {

@@ -27,10 +27,4 @@
  </tr>
  </table>
  
-<form>
-<input type="hidden"  name="id" value="<?=$cli->id ?>">
-<button type="submit" name="nav-detalles" value="Anterior"> Anterior << </button>
-<button type="submit" name="nav-detalles" value="Siguiente"> Siguiente >> </button>
-</form> 
-
 
