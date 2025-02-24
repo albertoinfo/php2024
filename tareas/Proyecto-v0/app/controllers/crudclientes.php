@@ -22,11 +22,40 @@ function crudAlta(){
     include_once "app/views/formulario.php";
 }
 
+function crudAltaError($cli){
+    $orden= "Nuevo";
+    include_once "app/views/formulario.php";
+}
+
+
 function crudDetalles($id){
     $db = AccesoDatos::getModelo();
     $cli = $db->getCliente($id);
     include_once "app/views/detalles.php";
 }
+
+function crudDetallesSiguiente ($id){
+    $db = AccesoDatos::getModelo();
+    $cli = $db->getClienteSiguiente($id);
+    if ( $cli){
+        include_once "app/views/detalles.php";
+    } else{
+        crudDetalles($id); 
+    }
+
+}
+
+function crudDetallesAnterior ($id){
+    $db = AccesoDatos::getModelo();
+    $cli = $db->getClienteAnterior($id);
+    if ( $cli){
+        include_once "app/views/detalles.php";
+    } else {
+        crudDetalles($id); 
+    }
+
+}
+
 
 
 
@@ -48,6 +77,12 @@ function crudPostAlta(){
     $cli->gender        =$_POST['gender'];
     $cli->ip_address    =$_POST['ip_address'];
     $cli->telefono      =$_POST['telefono'];
+    if ( $cli->telefono == 0){
+        crudAltaError($cli);
+        return;
+    }
+
+
     $db = AccesoDatos::getModelo();
     if ( $db->addCliente($cli) ) {
            $_SESSION['msg'] = " El usuario ".$cli->first_name." se ha dado de alta ";

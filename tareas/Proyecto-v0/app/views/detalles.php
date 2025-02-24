@@ -26,5 +26,9 @@
  <td><input type="tel" name="telefono" value="<?=$cli->telefono ?>" readonly ></td></tr>
  </tr>
  </table>
- 
+<form>
+    <input type="hidden"  name="id" value="<?=$cli->id ?>" >
+    <button type="submit" name="nav-detalles" value="Siguiente"> Siguiente </button>
+    <button type="submit" name="nav-detalles" value="Anterior"> Anterior </button>
+</form> 
 

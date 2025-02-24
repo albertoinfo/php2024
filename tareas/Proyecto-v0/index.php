@@ -41,6 +41,13 @@ if ($_SERVER['REQUEST_METHOD'] == "GET" ){
         $_SESSION['posini'] = $posAux;
     }
 
+    if ( isset($_GET['nav-detalles'])) {
+        switch ( $_GET['nav-detalles']) {
+            case "Anterior" : crudDetallesAnterior($_GET['id']); break;
+            case "Siguiente": crudDetallesSiguiente($_GET['id']); break;
+        }
+    }
+
 
     // Proceso de ordenes de CRUD clientes
     if ( isset($_GET['orden'])){

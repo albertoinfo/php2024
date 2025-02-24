@@ -75,7 +75,7 @@ class AccesoDatos {
       
     // SELECT Devuelvo un usuario o false
     public function getCliente (int $id) {
-        $cli = false;
+        $cli = null;
         $stmt_cli   = $this->dbh->prepare("select * from Clientes where id=:id");
         $stmt_cli->setFetchMode(PDO::FETCH_CLASS, 'Cliente');
         $stmt_cli->bindParam(':id', $id);
@@ -87,7 +87,35 @@ class AccesoDatos {
         return $cli;
     }
 
+    // SELECT Devuelvo un usuario o false
+    public function getClienteSiguiente (int $id) {
+        $cli = null;
+        $stmt_cli   = $this->dbh->prepare("select * from Clientes where id >:id limit 1");
+        $stmt_cli->setFetchMode(PDO::FETCH_CLASS, 'Cliente');
+        $stmt_cli->bindParam(':id', $id);
+        if ( $stmt_cli->execute() ){
+             if ( $obj = $stmt_cli->fetch()){
+                $cli= $obj;
+            }
+        }
+        return $cli;
+    }
    
+
+    public function getClienteAnterior (int $id) {
+        $cli = false;
+        $stmt_cli   = $this->dbh->prepare("select * from Clientes where id <:id  order by id  Desc limit 1");
+        $stmt_cli->setFetchMode(PDO::FETCH_CLASS, 'Cliente');
+        $stmt_cli->bindParam(':id', $id);
+        if ( $stmt_cli->execute() ){
+             if ( $obj = $stmt_cli->fetch()){
+                $cli= $obj;
+            }
+        }
+        return $cli;
+    }
+   
+
 
     // UPDATE TODO
     public function modCliente($cli):bool{
