@@ -22,16 +22,16 @@ $rutasPelis = [
 
 
 
-if (isset($_GET['orden'])){
+if (isset($_REQUEST['orden'])){
             // La orden tiene una funcion asociada 
-            if ( isset ($rutasPelis[$_GET['orden']]) ){
-                $procRuta =  $rutasPelis[$_GET['orden']];
+            if ( isset ($rutasPelis[$_REQUEST['orden']]) ){
+                $procRuta =  $rutasPelis[$_REQUEST['orden']];
             }
             else {
                 // Error no existe función para la ruta
                 header('Status: 404 Not Found');
                 echo '<html><body><h1>Error 404: No existe la ruta <i>' .
-                    $_GET['orden'] .
+                    $_REQUEST['orden'] .
                     '</p></body></html>';
                     exit;
             }
