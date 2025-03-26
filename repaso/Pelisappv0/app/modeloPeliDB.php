@@ -15,7 +15,6 @@ class ModeloPeliDB {
     // Consultas:
     private $stmt_peliculas = null;
     private $stmt_peli = null;
-    private $stmt_update = null;
    
     public static function getModelo(){
         if (self::$modelo == null){
@@ -47,9 +46,6 @@ class ModeloPeliDB {
              // Creo las consultas de preparadas
              $this->stmt_peliculas  = $this->dbh->prepare("select * from peliculas");
              $this->stmt_peli      = $this->dbh->prepare("select * from peliculas where codigo_pelicula=:id");
-             $this->stmt_update   = $this->dbh->prepare("UPDATE peliculas set  nombre=:nombre, director =:director, ".
-                                     "genero=:genero, imagen=:imagen where codigo_pelicula =:codigo_pelicula");
-
 
          } catch (PDOException $e ){
             echo " Error al crear las sentencias SQL ".$e->getMessage();
@@ -78,7 +74,6 @@ public  function GetAll ():array{
     while ( $peli = $this->stmt_peliculas->fetch()){
         $tpelis[] = $peli;       
     }
-    // tpelis = 
     return $tpelis;
 }
 
@@ -94,19 +89,8 @@ public function getById ($id):object {
     return $peli;
 }
 
-public function update ($peli) {
-
-    $this->stmt_update->bindValue(':codigo_pelicula',$peli->codigo_pelicula );
-    $this->stmt_update->bindValue(':nombre', $peli->nombre );
-    $this->stmt_update->bindValue(':genero', $peli->genero );
-    $this->stmt_update->bindValue(':director',$peli->director );
-    $this->stmt_update->bindValue(':imagen',$peli->imagen );
-    if ($this->stmt_update->execute ()){
-        return true;
-    }
-    return false; 
-
-
+public static function closeDB(){
+    self::$dbh = null;
 }
 
 } // class

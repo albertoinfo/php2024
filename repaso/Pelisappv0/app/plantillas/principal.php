@@ -14,9 +14,6 @@
         <div id="header">
             <h1>MI PELÍCULAS PREFERIDAS versión 1.0</h1>
         </div>
-        <div id="msg">
-            <?= $_SESSION['msg'] ?> 
-        </div>
         <div id="content">
             <?= $contenido ?>
         </div>

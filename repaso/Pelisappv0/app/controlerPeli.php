@@ -26,24 +26,8 @@ function ctlPeliAlta (){
  *  Muestra y procesa el formulario de Modificación 
  */
 function ctlPeliModificar (){
-    if  ($_SERVER['REQUEST_METHOD'] == 'GET'){
-        if ( isset($_GET['id'])){
-            $db = ModeloPeliDB::getModelo();
-            $peli = $db->getbyId($_GET['id']);
-            include_once 'plantillas/fmodificar.php';
-        }
-    // Modificar -----<
-    } else {
-        $peli = new Pelicula();
-        $peli->codigo_pelicula = $_POST['codigo_pelicula'];
-        $peli->nombre   = $_POST['nombre'];
-        $peli->director = $_POST['director'];
-        $peli->genero   = $_POST['genero'];
-        $db = ModeloPeliDB::getModelo();
-        $peli = $db->Update($peli);
-        $_SESSION['msg'] = " Película actualizada ";
-        ctlPeliVerPelis();
-    }  
+
+    include 'plantillas/todo.php';
 }
 
 

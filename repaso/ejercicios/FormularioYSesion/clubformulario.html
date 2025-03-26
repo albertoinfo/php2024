@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eje01</title>
+</head>
+<body>
+    <h1>INTRODUZCA SUS DATOS</h1>
+    Datos de identificación:<br>
+    <form action="prodatos.php" method="get">
+        Nombre: <input type="text" name="nombre" ><br>
+        Edad: <input type="number" name="edad" ><br>
+        Deportes: <br>
+        <input type="checkbox" name="deportes[]" value="Tenis">Tenis
+        <input type="checkbox" name="deportes[]" value="Judo">Judo
+        <input type="checkbox" name="deportes[]" value="Ciclismo">Ciclismo
+        <input type="checkbox" name="deportes[]" value="Natacion">Natacion
+        <input type="checkbox" name="deportes[]" value="Escalada">Escalada <br><br>
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>

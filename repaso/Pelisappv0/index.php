@@ -12,7 +12,7 @@ include_once 'app/modeloPeliDB.php';
 // Rutas en MODO PELICULAS
 $rutasPelis = [
     "Inicio"      => "ctlPeliInicio",
-    "Nuevo"       => "ctlPeliAlta",
+    "Nuevo"        => "ctlPeliAlta",
     "Detalles"    => "ctlPeliDetalles",
     "Modificar"   => "ctlPeliModificar",
     "Borrar"      => "ctlPeliBorrar",
@@ -21,7 +21,7 @@ $rutasPelis = [
 ];
 
 
-$_SESSION['msg']="";
+
 if (isset($_REQUEST['orden'])){
             // La orden tiene una funcion asociada 
             if ( isset ($rutasPelis[$_REQUEST['orden']]) ){
