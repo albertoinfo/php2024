@@ -16,6 +16,7 @@ class ModeloPeliDB {
     private $stmt_peliculas = null;
     private $stmt_peli = null;
     private $stmt_update = null;
+    
    
     public static function getModelo(){
         if (self::$modelo == null){
@@ -50,7 +51,7 @@ class ModeloPeliDB {
              $this->stmt_update   = $this->dbh->prepare("UPDATE peliculas set  nombre=:nombre, director =:director, ".
                                      "genero=:genero, imagen=:imagen where codigo_pelicula =:codigo_pelicula");
 
-
+        
          } catch (PDOException $e ){
             echo " Error al crear las sentencias SQL ".$e->getMessage();
          }
@@ -93,6 +94,8 @@ public function getById ($id):object {
         }
     return $peli;
 }
+
+
 
 public function update ($peli) {
 

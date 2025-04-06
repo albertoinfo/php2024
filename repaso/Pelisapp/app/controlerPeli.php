@@ -21,7 +21,8 @@ function  ctlPeliInicio(){
 
 function ctlPeliAlta (){
     include 'plantillas/todo.php';
-}
+}   
+
 /*
  *  Muestra y procesa el formulario de Modificación 
  */
@@ -39,13 +40,44 @@ function ctlPeliModificar (){
         $peli->nombre   = $_POST['nombre'];
         $peli->director = $_POST['director'];
         $peli->genero   = $_POST['genero'];
+        if ( !empty($_FILES['imagen']['name']) ){
+            if ( $msg = ErrordescargarPeli()){
+                include_once 'plantillas/fmodificar.php';
+                return;
+               } else {
+                $peli->imagen = $_FILES['imagen']['name'];     
+               }
+            } else {
+                // Si no se ha subido imagen, se mantiene la que ya tenía
+                $peli->imagen = $_POST['imagenold'];
+            }
         $db = ModeloPeliDB::getModelo();
         $peli = $db->Update($peli);
         $_SESSION['msg'] = " Película actualizada ";
         ctlPeliVerPelis();
+        }
+        
     }  
-}
 
+
+function ErrordescargarPeli(){
+    $nombreFichero   =   $_FILES['imagen']['name'];
+    $tipoFichero     =   $_FILES['imagen']['type'];
+    $tamanioFichero  =   $_FILES['imagen']['size'];
+    $temporalFichero =   $_FILES['imagen']['tmp_name'];
+    $errorFichero    =   $_FILES['imagen']['error'];
+    $msg=false;
+    if ($errorFichero != 0 ){
+        $msg="Error al subir el fichero $nombreFichero <br>";
+    } else 
+    if ($tipoFichero != "image/jpeg" && $tipoFichero != "image/png") {
+        $msg =" Error el fichero no es una imagen jpeg o png";
+    } else
+    if (! move_uploaded_file($temporalFichero,'app/img/'. $nombreFichero )) {
+       $msg= "ERROR: el fichero no se puede copiar en imagenes";
+    }
+    return $msg;
+}
 
 
 /*
